@@ -1,38 +1,22 @@
-import { 
-  Sidebar,
-  SidebarContent,
-  SidebarFooter,
-  SidebarHeader,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-  SidebarProvider,
-  SidebarTrigger 
-} from "@/components/ui/sidebar";
-import { AppSidebarClient } from "./_AppSidebarClient";
+import { JobListingItems } from "./(job-seeker)/_shared/JobListingItems"
+import { JobSeekerShell } from "./(job-seeker)/_shared/JobSeekerShell"
 
-export default function Home() {
-  return <SidebarProvider className="overflow-y-hidden">
-    <AppSidebarClient>
-
-    <Sidebar collapsible="icon" className="overflow-hidden">
-      <SidebarHeader className="flex-row">
-        <SidebarTrigger />
-        <span className="text-xl text-nowrap text">HireStream</span>
-      </SidebarHeader>
-      <SidebarContent>
-        abc
-      </SidebarContent>
-      <SidebarFooter>
-        <SidebarMenu>
-          <SidebarMenuItem>
-            <SidebarMenuButton> Open </SidebarMenuButton>
-          </SidebarMenuItem>
-        </SidebarMenu>
-      </SidebarFooter>
-    </Sidebar>
-    <main className="flex-1">Hi</main>
-    
-    </AppSidebarClient>
-  </SidebarProvider>
+export default function Home({
+  searchParams,
+}: {
+  searchParams: Promise<Record<string, string | string[]>>
+}) {
+  return (
+    <JobSeekerShell>
+      <div className="mx-auto w-full max-w-5xl p-4 md:p-6">
+        <div className="mb-6">
+          <h1 className="text-2xl font-semibold tracking-tight">Job Board</h1>
+          <p className="text-muted-foreground">
+            Browse published roles and apply with your saved resume.
+          </p>
+        </div>
+        <JobListingItems searchParams={searchParams} />
+      </div>
+    </JobSeekerShell>
+  )
 }

@@ -22,7 +22,7 @@ export type JobListingStatus = typeof jobListingStatuses[number]
 export const jobListingStatusEnum = pgEnum("job_listings_status", jobListingStatuses)
 
 export const  jobListingTypes = ["internship", "part-time", "full-time"] as const
-export type Type = typeof jobListingTypes[number]
+export type JobListingType = typeof jobListingTypes[number]
 export const jobListingTypeEnum = pgEnum("job_listings_type", jobListingTypes)
 
 

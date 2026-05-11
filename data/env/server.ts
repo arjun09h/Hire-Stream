@@ -8,6 +8,13 @@ export const env = createEnv({
         DB_HOST: z.string().min(1),
         DB_PORT: z.string().min(1),
         DB_NAME: z.string().min(1),
+        CLERK_SECRET_KEY: z.string().min(1),
+        CLERK_WEBHOOK_SECRET: z.string().default(""),
+        GEMINI_API_KEY: z.string().default(""),
+        ANTHROPIC_API_KEY: z.string().default(""),
+        RESEND_API_KEY: z.string().default(""),
+        SERVER_URL: z.string().default(""),
+        UPLOADTHING_TOKEN: z.string().default(""),
     },
     createFinalSchema: env => {
         return z.object(env).transform(val => {
